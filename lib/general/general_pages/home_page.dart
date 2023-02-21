@@ -189,7 +189,9 @@ class CartButtonName extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(homeController.charactersImage[positionName].name ,style: const TextStyle(fontWeight: FontWeight.bold,fontSize: 20,),textAlign: TextAlign.left ,),
+              homeController.charactersImage.isNotEmpty
+              ?Text(homeController.charactersImage[positionName].name ,style: const TextStyle(fontWeight: FontWeight.bold,fontSize: 20,),textAlign: TextAlign.left ,)
+              :Container(),
               const SizedBox(height: 5),
               const Text('\$140\$',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20,color: Color(0XFF8366ce),),textAlign: TextAlign.left ,),
             ],
@@ -241,11 +243,14 @@ class PopularProduct extends StatelessWidget {
                 padding: const EdgeInsets.all(35.0),
                 child: FittedBox(
                     fit:BoxFit.fill,
-                    child: FadeInImage(
-                      image: NetworkImage(homeController.charactersImage[positionImage].image),
+                    child:
+                    homeController.charactersImage.isNotEmpty
+                    ?FadeInImage(
+                      image: NetworkImage(homeController.charactersImage[positionImage].image) ,
                       placeholder: const AssetImage('assets/loading.gif'),
                       fadeInDuration: const Duration(milliseconds: 300),
                     )
+                        :Image.asset('assets/loading.gif'),
                 ),
               ),
 
@@ -267,11 +272,14 @@ class PopularProduct extends StatelessWidget {
                 padding: const EdgeInsets.all(35.0),
                 child: FittedBox(
                     fit:BoxFit.fill,
-                    child: FadeInImage(
-                      image: NetworkImage(homeController.charactersImage[positionImage].image),
+                    child:
+                    homeController.charactersImage.isNotEmpty
+                        ?FadeInImage(
+                      image: NetworkImage(homeController.charactersImage[positionImage].image) ,
                       placeholder: const AssetImage('assets/loading.gif'),
                       fadeInDuration: const Duration(milliseconds: 300),
                     )
+                        :Image.asset('assets/loading.gif'),
                 ),
               ),
             ),
@@ -298,11 +306,14 @@ class PopularProduct extends StatelessWidget {
                         padding: const EdgeInsets.all(20.0),
                         child: FittedBox(
                             fit:BoxFit.fill,
-                            child: FadeInImage(
-                              image: NetworkImage(homeController.charactersImage[positionImage].image),
-                              fadeInDuration: const Duration(milliseconds: 300),
+                            child:
+                            homeController.charactersImage.isNotEmpty
+                                ?FadeInImage(
+                              image: NetworkImage(homeController.charactersImage[positionImage].image) ,
                               placeholder: const AssetImage('assets/loading.gif'),
+                              fadeInDuration: const Duration(milliseconds: 300),
                             )
+                                :Image.asset('assets/loading.gif'),
                         ),
                       ),
                     ),
